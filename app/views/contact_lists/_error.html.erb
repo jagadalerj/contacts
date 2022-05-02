@@ -1,0 +1,3 @@
+<% if errors&.messages.present? %>
+  <span class="error"><%= errors&.messages[key.to_sym].join(', ') %><span>
+<% end %>

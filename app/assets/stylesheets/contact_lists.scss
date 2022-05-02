@@ -1,0 +1,76 @@
+// @import url("../stylesheets/_variables.scss");
+@import "variables";
+
+.content-page {
+  margin-left: auto !important;
+  padding: 0px 10px 0px !important;
+}
+
+// TODO: fix height
+.contact-listing-main {
+  height: 86vh;
+}
+
+.simplebar-content a .d-flex.align-items-start.p-2:hover {
+  cursor: pointer;
+}
+
+.simplebar-content .row:hover {
+  background: $item_bg_color;
+}
+
+input#search-contact {
+  padding-left: 15px;
+}
+
+.input-group.flex-nowrap .fa-search {
+  border: none;
+  background: $search_field_bg_color;
+  padding-top: 10px;
+}
+
+#add-new-contact {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px !important;
+  cursor: pointer;
+  background: $add_new_contact_btn_bg;
+  width: 35px;
+  height: 35px;
+  border: 1px solid $gray_button_border_color;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 3vw;
+  left: 59vw;
+}
+
+.add-new-contact:hover {
+  background: darken($add_new_contact_btn_bg, 10%);
+}
+
+.back-to-contact-listing {
+  text-align: end;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+
+  .fa-arrow-right {
+    padding-left: 5px;
+  }
+}
+
+a.contact-item {
+  width: 85% !important;
+}
+
+.contact-list-item-edit-btn {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 15% !important;
+}
+.error{color: indianred;}

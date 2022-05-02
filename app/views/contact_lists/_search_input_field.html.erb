@@ -1,0 +1,23 @@
+<div class="app-search">
+  <div class="mb-2 input-group flex-nowrap">
+    <input
+      id="search-contact"
+      type="text"
+      class="form-control form-control-sm"
+      placeholder="Search Contacts by Name or Mobile"
+      aria-label="Contact Search"
+      aria-describedby="contact-search-wrapping"
+      autocomplete="off"
+      autofocus
+    >
+    <span class="fa fa-search input-group-text" id="contact-search-wrapping"></span>
+</div>
+</div>
+<script>
+  function searchContactFunc(params) {
+    $('#search-contact').keyup(function (event) {
+      processChange(event);
+    })
+  }
+  searchContactFunc();
+</script>

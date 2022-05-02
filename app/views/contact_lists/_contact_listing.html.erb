@@ -1,0 +1,31 @@
+<div class="card contact-listing-card">
+  <div class="card-body p-0">
+    <!-- end nav-->
+    <div class="tab-content">
+      <div class="tab-pane show active p-3" id="newpost">
+        <!-- start search contacts -->
+        <%= render partial: "search_input_field" %>
+        <!-- end search contacts -->
+        <!-- Contact listing -->
+        <div class="row">
+          <div class="col">
+            <div data-simplebar class="contact-listing-main" id="contact-listing-main">
+              <% @contact_lists.each do |contact|%>
+                <%= render partial: "contact_item", locals: { id: contact&.id, name: contact&.name, number: contact&.number } %>
+              <%end%>
+            </div>
+            <!-- end slimscroll-->
+          </div>
+          <!-- End col -->
+        </div>
+        <!-- end Contact listing -->
+      </div>
+      <!-- end Tab Pane-->
+    </div>
+    <!-- end tab content-->
+  </div>
+  <!-- end card-body-->
+  <%= link_to fa_icon('plus', text: ""), new_contact_list_path, :remote => true, class: 'create-new-contact', id: "add-new-contact" %>
+  <%# <i class="fa fa-plus" id="add-new-contact" /> %>
+</i>
+<!-- end card-->
