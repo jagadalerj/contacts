@@ -65,11 +65,6 @@ $j(function () {
      case 57:
        number += '9';
        break;
-     // case 8:
-     //   total = number;
-     //   total = total.slice(0, -1);
-     //   number = total;
-     //   break;
      case 27:
        number = '';
        break;

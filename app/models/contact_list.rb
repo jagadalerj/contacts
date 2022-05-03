@@ -22,23 +22,11 @@ class ContactList < ApplicationRecord
   # Methods
   def self.search_contact_list(input)
     if input.present?
-      # a = KEYS[input[0].to_s] || []
-      # (1..input.length - 1).each do |i|
-      #   b = KEYS[input[i].to_s]
-      #   a = a.product(b).map { |s| s.flatten.join('') }
-      # end
-      # comb_array = a.uniq
-      # comb_array.each_slice(100).each do |i|
-      #   query = "SELECT * FROM contact_lists WHERE LOWER(name) like any (array ['%#{i.join("%','%")}%'] ) LIMIT 10"
-      #   active_record_result = ActiveRecord::Base.connection.execute(query)
-      # end  
-      # active_record_result.to_json
-      a=''
+      comb_str=''
       for i in 0..input.length-1 do
-        a=a+"(#{KEYS[input[i].to_s].join('|')})"
+        comb_str=comb_str+"(#{KEYS[input[i].to_s].join('|')})"
       end
-      puts "===============>>A=============#{a}"
-      query = "SELECT * FROM contact_lists WHERE LOWER(name) SIMILAR TO '%#{a}%' OR number like '%#{input}%'  LIMIT 10"         
+      query = "SELECT * FROM contact_lists WHERE LOWER(name) SIMILAR TO '%#{comb_str}%' OR number like '%#{input}%'  LIMIT 30"
       active_record_result = ActiveRecord::Base.connection.execute(query)
       active_record_result.to_json  
     end

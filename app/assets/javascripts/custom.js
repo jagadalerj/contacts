@@ -67,15 +67,3 @@ function debounce(func, timeout = 300) {
    timer = setTimeout(() => { func.apply(this, args); }, timeout);
  };
 }
- 
-// const processChange = debounce((event) => fetchContacts(event));
- 
-// // This func call on keyUp event.
-// function searchContactFunc(params) {
-//  $('.press-digit').keyup(function (event) {
-//    $('#input-val').val();
-//    processChange(event);
-//    // fetchContacts(event);
-//  })
-// }
-// searchContactFunc();
