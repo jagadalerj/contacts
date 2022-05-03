@@ -15,5 +15,6 @@
 //= require axios
 //= require vendor.min
 //= require app.min
+//= require main
 //= require custom
 //= require_tree .
