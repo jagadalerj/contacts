@@ -91,7 +91,9 @@ class ContactListsController < ApplicationController
   end
 
   def set_contact_list
-    @contact_lists = ContactList.ransack(search_params[:q]).result(distinct: true).order('name ASC')
+    value = search_params && search_params[:q] && search_params[:q][:name_or_number_cont]
+    @contact_lists = ContactList.search_contact_list(value)
+    # @contact_lists = ContactList.ransack(search_params[:q]).result(distinct: true).order('name ASC')
   end
 
   def contact_listing_params

@@ -1,6 +1,6 @@
 <%#= link_to name, contact_list_path(:id => id), :remote => true %>
 <div class="row">
-  <a data-remote="true" href="/contact_lists/<%= id %>" class="contact-item col-md-10 text-body" data-id=<%= id %>>
+  <!-- <a data-remote="true" href="/contact_lists/<%= id %>" class="contact-item col-md-10 text-body" data-id=<%= id %>> -->
     <div class="d-flex align-items-start p-2">
         <div class="w-100 overflow-hidden">
           <h5 class="mt-0 mb-0 font-14">
@@ -11,8 +11,8 @@
           </p>
         </div>
     </div>
-  </a>
+  <!-- </a> -->
   <div class="col-md-2 overflow-hidden contact-list-item-edit-btn">
-    <%= link_to fa_icon('edit'), edit_contact_list_path(id), :remote => true, class: 'edit-contact-list col-md-12' %>
+    <%#= link_to fa_icon('edit'), edit_contact_list_path(id), :remote => true, class: 'edit-contact-list col-md-12' %>
   </div>
 </div>

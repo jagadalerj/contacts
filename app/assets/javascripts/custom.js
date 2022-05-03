@@ -2,7 +2,7 @@
 const makeContactItemToHtml = (contact) => {
  if (contact) {
    return (
-     `<div class="row"><a data-remote="true" href="/contact_lists/${contact?.id}" class="contact-item col-md-10 text-body" data-id=${contact?.id}>
+     `<div class="row">
       <div class="d-flex align-items-start p-2">
         <div class="w-100 overflow-hidden">
           <h5 class="mt-0 mb-0 font-14">
@@ -13,10 +13,6 @@ const makeContactItemToHtml = (contact) => {
           </p>
         </div>
       </div>
-    </a>
-    <div class="col-md-2 overflow-hidden contact-list-item-edit-btn">
-      <a class="edit-contact-list col-md-12" data-remote="true" href="/contact_lists/${contact?.id}/edit"><i class="fa fa-edit"></i></a>
-    </div>
     </div>`
    )
  }
@@ -50,8 +46,8 @@ const makeContactListItemsToHtml = (contactLists) => {
  
  
 // This function call '/contact_lists?q[name_or_number]=..' and get sorted result back.
-const fetchContacts = (event) => {
- const searchParamValue = event?.target?.value || '';
+const fetchContacts = (value) => {
+ const searchParamValue = value || '';
  axios({
    url: `/contact_lists/search?q[name_or_number_cont]=${searchParamValue}`,
    method: 'get',
@@ -72,13 +68,14 @@ function debounce(func, timeout = 300) {
  };
 }
  
-const processChange = debounce((event) => fetchContacts(event));
+// const processChange = debounce((event) => fetchContacts(event));
  
-// This func call on keyUp event.
-function searchContactFunc(params) {
- $('#search-contact').keyup(function (event) {
-   processChange(event);
-   // fetchContacts(event);
- })
-}
-searchContactFunc();
+// // This func call on keyUp event.
+// function searchContactFunc(params) {
+//  $('.press-digit').keyup(function (event) {
+//    $('#input-val').val();
+//    processChange(event);
+//    // fetchContacts(event);
+//  })
+// }
+// searchContactFunc();

@@ -1,31 +1,125 @@
 <div class="card contact-listing-card">
-  <div class="card-body p-0">
-    <!-- end nav-->
-    <div class="tab-content">
-      <div class="tab-pane show active p-3" id="newpost">
-        <!-- start search contacts -->
-        <%= render partial: "search_input_field" %>
-        <!-- end search contacts -->
-        <!-- Contact listing -->
-        <div class="row">
-          <div class="col">
-            <div data-simplebar class="contact-listing-main" id="contact-listing-main">
-              <% @contact_lists.each do |contact|%>
-                <%= render partial: "contact_item", locals: { id: contact&.id, name: contact&.name, number: contact&.number } %>
-              <%end%>
-            </div>
-            <!-- end slimscroll-->
-          </div>
-          <!-- End col -->
-        </div>
-        <!-- end Contact listing -->
-      </div>
-      <!-- end Tab Pane-->
-    </div>
-    <!-- end tab content-->
-  </div>
-  <!-- end card-body-->
-  <%= link_to fa_icon('plus', text: ""), new_contact_list_path, :remote => true, class: 'create-new-contact', id: "add-new-contact" %>
-  <%# <i class="fa fa-plus" id="add-new-contact" /> %>
+ <div class="card-body p-0">
+   <!-- end nav-->
+   <div class="tab-content">
+     <div class="tab-pane show active p-3" id="newpost">
+       <!-- start search contacts -->
+       <%= render partial: "search_input_field" %>
+       <!-- end search contacts -->
+       <!-- Contact listing -->
+       <div class="row">
+         <div class="col">
+           <div data-simplebar class="contact-listing-main" id="contact-listing-main">
+             <% @contact_lists&.each do |contact|%>
+               <%= render partial: "contact_item", locals: { id: contact&.id, name: contact&.name, number: contact&.number } %>
+             <%end%>
+           </div>
+           <!-- end slimscroll-->
+         </div>
+         <!-- End col -->
+       </div>
+       <!-- end Contact listing -->
+     </div>
+     <!-- Start Kepad  -->
+ <div class="dialpad compact">
+       <div class="dials">
+           <ol>
+               <li class="digits"><p><strong>1</strong></p></li>
+               <li class="digits"><p><strong>2</strong><sup>abc</sup></p></li>
+               <li class="digits"><p><strong>3</strong><sup>def</sup></p></li>
+               <li class="digits"><p><strong>4</strong><sup>ghi</sup></p></li>
+               <li class="digits"><p><strong>5</strong><sup>jkl</sup></p></li>
+               <li class="digits"><p><strong>6</strong><sup>mno</sup></p></li>
+               <li class="digits"><p><strong>7</strong><sup>pqrs</sup></p></li>
+               <li class="digits"><p><strong>8</strong><sup>tuv</sup></p></li>
+               <li class="digits"><p><strong>9</strong><sup>wxyz</sup></p></li>
+               <li class="digits"><p><strong><i class="fa fa-refresh"></i></strong><sup>Clear</sup></p></li>
+               <li class="digits"><p><strong>0</strong><sup>+</sup></p></li>
+               <li class="digits"><p><strong><i class="fa fa-times"></i></strong><sup>Delete</sup></p></li>
+           </ol>
+       </div>
+   </div>
+   <!-- End Keypad -->
+     <!-- end Tab Pane-->
+   </div>
+   <!-- end tab content-->
+ </div>
+ <!-- end card-body-->
+ <%= link_to fa_icon('plus', text: ""), new_contact_list_path, :remote => true, class: 'create-new-contact', id: "add-new-contact" %>
+ <%# <i class="fa fa-plus" id="add-new-contact" /> %>
 </i>
 <!-- end card-->
+
+<script type="text/javascript">
+  $j(function () {
+ 
+ var dials = $j(".dials ol li");
+ var index;
+ var number = '';
+ var total;
+ 
+ dials.click(function (e) {
+   index = dials.index(this);
+   if (index == 9) {
+     number = '';
+   } else if (index == 10) {
+     number += '0';
+   } else if (index == 11) {
+     total = number;
+     total = total.slice(0, -1);
+     number = total;
+   } else if (index == 14) {
+     //add any call action here
+   } else {
+     number += `${index + 1}`;
+   }
+   callFunc(number);
+ });
+ 
+ $j(document).keyup(function (e) {
+   switch (e.which) {
+     case 48:
+       number += '0';
+       break;
+     case 49:
+       number += '1';
+       break;
+     case 50:
+       number += '2';
+       break;
+     case 51:
+       number += '3';
+       break;
+     case 52:
+       number += '4';
+       break;
+     case 53:
+       number += '5';
+       break;
+     case 54:
+       number += '6';
+       break;
+     case 55:
+       number += '7';
+       break;
+     case 56:
+       number += '8';
+       break;
+     case 57:
+       number += '9';
+       break;
+     case 8:
+       total = number;
+       total = total.slice(0, -1);
+       number = total;
+       break;
+     case 27:
+       number = '';
+       break;
+     default: return;
+   }
+   callFunc(number);
+   e.preventDefault();
+ });
+});
+</script>
